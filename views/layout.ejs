@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : "Clubhouse" %></title>
+  <link rel="stylesheet" href="/clubhouse/public/style/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="content">
+    <%- include('partials/flash') %>
+    <%- body %>
+  </main>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

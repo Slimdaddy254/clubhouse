@@ -1,0 +1,27 @@
+
+<h1 class="page-title">Clubhouse Messages</h1>
+
+<div class="messages">
+  <% if (messagesList.length === 0) { %>
+    <p class="empty">No messages yet.</p>
+  <% } %>
+
+  <% messagesList.forEach(msg => { %>
+    <div class="message-card">
+      <h2><%= msg.title %></h2>
+      <p><%= msg.body %></p>
+      <small class="meta">
+        <% if (user && user.is_member) { %>
+          Posted by <%= msg.first_name %> <%= msg.last_name %> on <%= msg.created_at.toLocaleString() %>
+        <% } else { %>
+          Posted by <em>Anonymous</em>
+        <% } %>
+      </small>
+      <% if (user && user.is_admin) { %>
+        <form action="/delete/<%= msg.id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger btn-small">Delete</button>
+        </form>
+      <% } %>
+    </div>
+  <% }) %>
+</div>
