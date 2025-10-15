@@ -1,4 +1,4 @@
-# Clubhouse Clone
+# Member Clubhouse 
 
 A simple web application for creating and sharing messages within a private club.
 
