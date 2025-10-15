@@ -1,6 +1,8 @@
 # Member Clubhouse 
 
 A simple web application for creating and sharing messages within a private club.
+<img width="948" height="449" alt="image" src="https://github.com/user-attachments/assets/e95bbbb6-a79c-4367-928a-8ae0edd6aaf7" />
+
 
 ## Features
 
