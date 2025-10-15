@@ -14,9 +14,13 @@ function ensureAdmin(req, res, next) {
   res.redirect('/');
 }
 
-router.get('/new', ensureAuthenticated, (req, res) => res.render('new-message'));
+// GET route for displaying the new message form
+router.get('/new-message', (req, res) => {
+  res.render('new-message');
+});
 
-router.post('/new', ensureAuthenticated, [
+// POST route for handling the submission of a new message
+router.post('/new-message', ensureAuthenticated, [
   body('title').trim().notEmpty(),
   body('body').trim().notEmpty()
 ], async (req, res) => {
@@ -28,7 +32,7 @@ router.post('/new', ensureAuthenticated, [
      VALUES ($1, $2, $3)`,
     [req.body.title, req.body.body, req.user.id]
   );
-  res.redirect('/');
+  res.redirect('/'); // Redirect to the home page after posting the message
 });
 
 router.post('/:id/delete', ensureAdmin, async (req, res) => {

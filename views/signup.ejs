@@ -1,21 +1,47 @@
+<div class="container">
+    <div class="signup-box">
+      <div class="image-section">
+        <div class="placeholder-image">🏠</div>
+        <!-- Replace the placeholder above with your image: -->
+        <img src="https://www.freepik.com/free-ai-image/interior-design-neoclassical-style-with-furnishings-decor_138316749.htm#fromView=keyword&page=1&position=31&uuid=2832020c-e4f5-4b6c-85aa-f80128342225&query=Mansion" alt="Clubhouse">
+      </div>
 
+      <div class="form-section">
+        <h1>Sign Up</h1>
 
-<h1>Sign Up</h1>
-<form action="/signup" method="POST" class="form">
-  <label>First Name:</label>
-  <input type="text" name="first_name" required>
+        <!-- ADD THIS BLOCK to show validation errors -->
+        <% if (locals.errors && errors.length) { %>
+          <ul class="flash error">
+            <% errors.forEach(e => { %>
+              <li><%= e.msg %></li>
+            <% }) %>
+          </ul>
+        <% } %>
 
-  <label>Last Name:</label>
-  <input type="text" name="last_name" required>
+        <form action="/signup" method="POST" class="form">
+          <div class="form-group">
+            <label for="firstName">First name</label>
+            <input id="firstName" name="firstName" type="text" value="<%= old?.firstName || '' %>" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input id="lastName" name="lastName" type="text" value="<%= old?.lastName || '' %>" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" value="<%= old?.email || '' %>" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required>
+          </div>
+          <button class="btn-primary" type="submit">Sign Up</button>
+        </form>
 
-  <label>Email:</label>
-  <input type="email" name="email" required>
-
-  <label>Password:</label>
-  <input type="password" name="password" required>
-
-  <label>Confirm Password:</label>
-  <input type="password" name="confirmPassword" required>
-
-  <button type="submit" class="btn btn-primary">Create Account</button>
-</form>
+        <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+      </div>
+    </div>

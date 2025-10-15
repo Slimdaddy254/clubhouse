@@ -1,92 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&family=Comfortaa&family=Lusitana:wght@400;700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+  --theme: #F4991A;        /* primary brand color (header) */
+  --theme-dark: #d97706;   /* primary button / hover base (legacy) */
+  --theme-contrast: #1f2937;
+  --contrast-dark: #344F1F; /* unified darker contrast color requested */
+  --card-max-width: 820px; /* standard card width */
+  --button-padding: 10px 16px;
+}
+
+/* Unified button styles (header + primary + native) */
+a.header-btn,
+button.header-btn,
+.btn-primary {
+  background: var(--contrast-dark);
+  color: #fff;
+  border: none;
+  padding: var(--button-padding);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+a.header-btn:hover,
+button.header-btn:hover,
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(52,79,31,0.18);
+}
+
 body {
   font-family: system-ui, sans-serif;
   margin: 0;
-  background: #f8fafc;
-  color: #1f2937;
+  background: #F9F5F0;
+  color: var(--theme-contrast);
 }
 
 .header {
+  padding: 15px 40px;
   display: flex;
+  background: var(--theme);
   justify-content: space-between;
   align-items: center;
-  background: #1e293b;
-  color: white;
-  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* unify header logo color & spacing (unchanged visually) */
 .logo {
-  font-weight: bold;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
   color: white;
   text-decoration: none;
 }
 
-.nav-right a {
-  margin-left: 1rem;
-  text-decoration: none;
-}
-
+/* container width reduced to better match card size */
 .container {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 32px;
 }
 
-.page-title {
-  text-align: center;
-  margin-bottom: 1.5rem;
+/* cards reduced to a standard size */
+.login-box,
+.signup-box {
+  background: white;
+  max-width: var(--card-max-width);
+  display: flex;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin: 0 auto;
 }
 
-.messages {
+/* specific sizing for signup card to be pleasant and compact */
+.signup-box {
+  background: white;
+  max-width: var(--card-max-width);
+  display: flex;           /* row layout like login */
+  flex-direction: row;     /* explicit row */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin: 24px auto;
+}
+
+/* keep image-section sizing consistent for both cards */
+.image-section {
+  flex: 1;
+  /* background image from provided Unsplash source with subtle overlay */
+  background-image:
+    linear-gradient(rgba(244,149,26,0.16), rgba(244,149,26,0.16)),
+    url('https://www.freepik.com/free-ai-image/interior-design-neoclassical-style-with-furnishings-decor_138316749.htm#fromView=keyword&page=1&position=31&uuid=2832020c-e4f5-4b6c-85aa-f80128342225&query=Mansion');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  min-height: 380px;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* form section should mirror login */
+.form-section {
+  flex: 1;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
 }
 
-.message-card {
+/* slightly smaller inputs so compact cards fit better */
+.form input {
+  box-sizing: border-box;
+  width: calc(100% - 24px); /* leave space on the right */
+  margin-right: 24px;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fafafa;
+  transition: all 0.18s;
+}
+
+.form label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin-bottom: 8px;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--theme);
   background: white;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 0 0 3px rgba(244,153,26,0.08);
 }
 
+/* ensure primary call-to-action uses unified color (no gradient) */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--contrast-dark);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  margin-top: 8px;
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+/* responsive adjustments keep card compact on small screens */
+@media (max-width: 900px) {
+  .container {
+    padding: 28px 20px;
+  }
+  .login-box,
+  .signup-box {
+    max-width: calc(100% - 32px);
+    margin: 16px;
+  }
+  
+  .image-section {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header { padding: 10px 14px; }
+  .logo { font-size: 18px; }
+  .header-btn,
+  .btn-primary,
+  button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  
+  .form-section {
+    padding: 20px 16px;
+  }
+  
+  .form input {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* small utility tweaks (unchanged intent) */
 .meta {
   font-size: 0.85rem;
   color: #64748b;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: white;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.form input, .form textarea {
-  padding: 0.5rem;
-  border-radius: 0.375rem;
-  border: 1px solid #cbd5e1;
-}
-.empty {
-  text-align: center;
-  color: #64748b;
-  padding: 2rem;
-  font-style: italic;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background: #334155;
-  color: white;
-  text-align: center;
-}
-
-.btn-primary { background: #2563eb; }
-.btn-danger { background: #dc2626; }
+.btn-danger { background: #dc2626; color: white; }
 .btn-small { font-size: 0.8rem; padding: 0.3rem 0.5rem; }
 
 .flash {
@@ -97,3 +227,4 @@ body {
 
 .flash.error { background: #fee2e2; color: #b91c1c; }
 .flash.success { background: #dcfce7; color: #15803d; }
+

@@ -6,13 +6,18 @@
     <% if (user) { %>
       <span class="welcome">Hi, <%= user.first_name %></span>
       <% if (!user.is_member) { %>
-        <a href="/join" class="btn">Join Club</a>
+        <a href="/join" class="header-btn">Join Club</a>
       <% } %>
-      <a href="/new-message" class="btn">New Message</a>
-      <a href="/logout" class="btn btn-danger">Logout</a>
+      <a href="/new-message" class="header-btn">New Message</a>
+
+      <!-- POST form for logout -->
+      <form action="/logout" method="POST" class="logout-form" style="display:inline">
+        <!-- add CSRF hidden input if you use CSRF protection -->
+        <button type="submit" class="header-btn btn-danger">Logout</button>
+      </form>
     <% } else { %>
-      <a href="/login" class="btn">Login</a>
-      <a href="/signup" class="btn btn-primary">Sign Up</a>
+      <a href="/login" class="header-btn">Login</a>
+      <a href="/signup" class="header-btn">Sign Up</a>
     <% } %>
   </div>
 </header>

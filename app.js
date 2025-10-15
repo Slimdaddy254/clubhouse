@@ -72,8 +72,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', authRoutes);
-app.use('/membership', membershipRoutes);
-app.use('/messages', messageRoutes);
+app.use('/', membershipRoutes);
+app.use('/', messageRoutes);       
 
 app.get('/', async (req, res) => {
   const result = await pool.query(
