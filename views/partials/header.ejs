@@ -6,9 +6,9 @@
     <% if (user) { %>
       <span class="welcome">Hi, <%= user.first_name %></span>
       <% if (!user.is_member) { %>
-        <a href="/join" class="header-btn">Join Club</a>
+        <a href="/membership/join" class="header-btn">Join Club</a>
       <% } %>
-      <a href="/new-message" class="header-btn">New Message</a>
+      <a href="/messages/new-message" class="header-btn">New Message</a>
 
       <!-- POST form for logout -->
       <form action="/logout" method="POST" class="logout-form" style="display:inline">

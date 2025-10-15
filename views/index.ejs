@@ -1,22 +1,35 @@
-<h1 class="page-title">Clubhouse Messages</h1>
+<section class="container">
+  <h1>Messages</h1>
 
-<div class="messages">
   <% if (messagesList.length === 0) { %>
     <p class="empty">No messages yet.</p>
   <% } %>
 
   <% messagesList.forEach(m => { %>
-    <article>
-      <h3><%= m.title %></h3>
-      <p><%= m.body %></p>
-      <% if (user && (user.is_member || user.is_admin)) { %>
-        <small>By <%= m.first_name %> <%= m.last_name %> • <%= new Date(m.created_at).toLocaleString() %></small>
-      <% } %>
+    <div class="message-card">
+      <div class="message-header">
+        <div class="message-author">
+          <% if (user && (user.is_member || user.is_admin)) { %>
+            <%= m.first_name %> <%= m.last_name %>
+          <% } else { %>
+            Anonymous User
+          <% } %>
+        </div>
+        <div class="message-date">
+          <% if (user && (user.is_member || user.is_admin)) { %>
+            <%= new Date(m.created_at).toLocaleString() %>
+          <% } %>
+        </div>
+      </div>
+      <div class="message-body">
+        <h3><%= m.title %></h3>
+        <p><%= m.body %></p>
+      </div>
       <% if (user && user.is_admin) { %>
         <form action="/messages/<%= m.id %>/delete" method="POST" style="display:inline">
           <button type="submit" class="btn-danger">Delete</button>
         </form>
       <% } %>
-    </article>
+    </div>
   <% }) %>
-</div>
+</section>

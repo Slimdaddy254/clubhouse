@@ -1,7 +1,16 @@
+<section class="container">
+  <div class="login-box">
+    <div class="form-section">
+      <h1>Join the Club</h1>
 
-<h1>Join the Club</h1>
-<form action="/join" method="POST" class="form">
-  <label>Secret Passcode:</label>
-  <input type="password" name="passcode" required>
-  <button type="submit" class="btn btn-primary">Join</button>
-</form>
+      <form action="/membership/join" method="POST" class="form">
+        <div class="form-group">
+          <label for="passcode">Secret Passcode:</label>
+          <input type="text" id="passcode" name="passcode" placeholder="Enter passcode" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Join</button>
+      </form>
+    </div>
+  </div>
+</section>

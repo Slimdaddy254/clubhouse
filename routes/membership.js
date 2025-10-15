@@ -9,9 +9,13 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-router.get('/join', ensureAuthenticated, (req, res) => res.render('join'));
+// GET route for displaying the join form
+router.get('/membership/join', ensureAuthenticated, (req, res) => {
+  res.render('join');
+});
 
-router.post('/join', ensureAuthenticated, [
+// POST route for handling the submission of the join form
+router.post('/membership/join', ensureAuthenticated, [
   body('passcode').notEmpty()
 ], async (req, res) => {
   const errors = validationResult(req);

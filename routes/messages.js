@@ -15,12 +15,12 @@ function ensureAdmin(req, res, next) {
 }
 
 // GET route for displaying the new message form
-router.get('/new-message', (req, res) => {
+router.get('/messages/new-message', (req, res) => {
   res.render('new-message');
 });
 
 // POST route for handling the submission of a new message
-router.post('/new-message', ensureAuthenticated, [
+router.post('/messages/new-message', ensureAuthenticated, [
   body('title').trim().notEmpty(),
   body('body').trim().notEmpty()
 ], async (req, res) => {
